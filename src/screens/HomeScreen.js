@@ -4,7 +4,7 @@ import HomeScreenHeader from '../components/HomeScreenHeader';
 import Listing from '../components/Listing';
 import NewListingField from '../components/NewListingField';
 
-const HomeScreen = () => {
+export default function HomeScreen(props) {
   return (
     <View style={styles.container}>
       <HomeScreenHeader />
@@ -12,12 +12,10 @@ const HomeScreen = () => {
       <NewListingField />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
-
-export default HomeScreen;
