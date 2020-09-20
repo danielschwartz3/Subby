@@ -4,7 +4,7 @@ import {Appbar, Button} from 'react-native-paper';
 
 const HomeScreenHeader = (props) => {
   return (
-    <Appbar.Header style={{backgroundColor: '#6495ed'}}>
+    <Appbar.Header style={{backgroundColor: '#1C2541'}}>
       <Appbar.Content titleStyle={styles.text} title="Subby Postings" />
       <Button
         style={{width: 60}}
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     height: 90,
     width: '100%',
     paddingTop: 50,
-    backgroundColor: '#6495ed',
+    backgroundColor: '#1C2541',
   },
   text: {
     color: '#FFFFFF',
