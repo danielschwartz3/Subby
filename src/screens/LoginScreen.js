@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 import {StyleSheet} from 'react-native';
-import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
+import {Appbar} from 'react-native-paper';
 
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState('');
@@ -48,7 +48,9 @@ export default function LoginScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <HomeScreenHeader />
+      <Appbar.Header style={{backgroundColor: '#1C2541'}}>
+        <Appbar.Content title="Subby" />
+      </Appbar.Header>
       <View style={{paddingBottom: '7.5%'}}></View>
       <TextInput
         style={styles.input}
@@ -69,7 +71,11 @@ export default function LoginScreen({navigation}) {
         underlineColorAndroid="transparent"
         autoCapitalize="none"
       />
-      <TouchableOpacity style={styles.button} onPress={() => onLoginPress()}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          onLoginPress();
+        }}>
         <Text style={styles.buttonTitle}>Log in</Text>
       </TouchableOpacity>
       <View style={styles.footerView}>
@@ -82,7 +88,6 @@ export default function LoginScreen({navigation}) {
       </View>
       <ImageBackground
         style={{
-          // resizeMode: 'contain',
           width: '120%',
           height: undefined,
           aspectRatio: 1,
@@ -99,7 +104,6 @@ export default function LoginScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
   },
   title: {},
   logo: {
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   button: {
-    backgroundColor: '#6495ed',
+    backgroundColor: '#1C2541',
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
@@ -150,5 +154,10 @@ const styles = StyleSheet.create({
     color: '#788eec',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 23,
+    textAlign: 'center',
   },
 });
