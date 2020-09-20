@@ -31,6 +31,6 @@ export default function HomeScreen(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
   },
 });
