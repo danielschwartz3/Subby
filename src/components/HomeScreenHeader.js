@@ -13,4 +13,18 @@ const HomeScreenHeader = () => {
 };
 
 
+const styles = StyleSheet.create({
+  header: {
+    height: 90,
+    width: '100%',
+    paddingTop: 50,
+    backgroundColor: '#6495ed',
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 23,
+    textAlign: 'center',
+  },
+});
+
 export default HomeScreenHeader;
