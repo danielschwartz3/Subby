@@ -1,24 +1,69 @@
 import React from 'react';
-import {View, StyleSheet, ImageBackground} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
+import {
+  Paragraph,
+  Card,
+  Title,
+  Button,
+  Avatar,
+  TextInput,
+} from 'react-native-paper';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import Listing from '../components/Listing';
-import {firebase} from '../config';
-import {ScrollView} from 'react-native';
+import NewListingField from '../components/NewListingField';
 
-export default function HomeScreen(props) {
+export default function HomeScreen({navigation}) {
+  const sub_icon = (props) => <Avatar.Icon {...props} icon="folder" />;
+  const [text, setText] = React.useState('');
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <HomeScreenHeader />
-        <Listing />
-        <Listing />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.text}>Subby</Text>
       </View>
-    </ScrollView>
+      
+      <Card>
+        <Card.Title title="User" left={sub_icon} style={{padding: 15}} />
+          <Card.Content>
+            <Title>Price per Month</Title>
+            <Paragraph>Address</Paragraph>
+            <Paragraph>City</Paragraph>
+          </Card.Content>
+        <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+        <Card.Actions>
+          <Button onPress={() => navigation.navigate('IndListing')}>
+            Details
+          </Button>
+        </Card.Actions>
+      </Card>
+
+      <View style={styles.textField}>
+        <TextInput
+          label="Email"
+          value={text}
+          onChangeText={(text) => setText(text)}
+        />
+      </View>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  textField: {
+    paddingLeft: '2.5%',
+    paddingRight: '2.5%',
+  },
+  header: {
+    height: 90,
+    width: '100%',
+    paddingTop: 50,
+    backgroundColor: '#6495ed',
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 23,
+    textAlign: 'center',
   },
 });

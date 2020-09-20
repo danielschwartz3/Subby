@@ -114,7 +114,7 @@ export default function RegistrationScreen({navigation}) {
           aspectRatio: 1,
           justifyContent: 'flex-end',
           position: 'absolute',
-          bottom: -100,
+          bottom: -300,
           alignSelf: 'center',
           zIndex: 1,
         }}

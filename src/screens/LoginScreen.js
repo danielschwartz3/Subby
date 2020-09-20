@@ -88,7 +88,7 @@ export default function LoginScreen({navigation}) {
           aspectRatio: 1,
           justifyContent: 'flex-end',
           position: 'absolute',
-          bottom: -100,
+          bottom: -200,
           alignSelf: 'center',
         }}
         source={require('../backgroundPic1.png')}></ImageBackground>
