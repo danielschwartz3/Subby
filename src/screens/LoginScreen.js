@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {StyleSheet} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
@@ -75,7 +82,7 @@ export default function LoginScreen({navigation}) {
         </Text>
       </View>
       <View>
-        <Image
+        <ImageBackground
           style={{
             // resizeMode: 'contain',
             width: '120%',
@@ -86,8 +93,7 @@ export default function LoginScreen({navigation}) {
             bottom: -10,
             alignSelf: 'center',
           }}
-          source={require('../backgroundPic1.png')}
-        />
+          source={require('../backgroundPic1.png')}></ImageBackground>
       </View>
     </View>
   );
