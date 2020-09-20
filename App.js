@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
-import {color} from 'react-native-reanimated';
+import PostScreen from './src/screens/PostingScreen';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +13,7 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={PostScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
