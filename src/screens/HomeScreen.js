@@ -42,6 +42,10 @@ export default function HomeScreen({navigation}) {
     navigation.navigate('Posting');
   };
 
+  const goToDetailPage = (item) => {
+    navigation.navigate('ListDetail', {item: item});
+  };
+
   const renderEntity = ({item, index}) => {
     return (
       <SafeAreaView>
@@ -89,7 +93,8 @@ export default function HomeScreen({navigation}) {
                 <Button
                   mode="outlined"
                   color="#1C2541"
-                  style={{align: 'center'}}>
+                  style={{align: 'center'}}
+                  onPress={() => goToDetailPage((item: item))}>
                   Details
                 </Button>
               </View>
