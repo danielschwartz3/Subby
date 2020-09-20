@@ -12,6 +12,7 @@ import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
 import {Paragraph, Card, Title, Button, Chip} from 'react-native-paper';
 import {sub} from 'react-native-reanimated';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default function HomeScreen({navigation}) {
   const [sublets, setSublets] = useState([]);
@@ -105,30 +106,32 @@ export default function HomeScreen({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
-      <HomeScreenHeader goToPostings={goToPostingsPage} />
+    <ScrollView style={{backgroundColor: 'white'}}>
+      <View style={styles.container}>
+        <HomeScreenHeader goToPostings={goToPostingsPage} />
 
-      {sublets && (
-        <View>
-          <FlatList
-            data={sublets}
-            renderItem={renderEntity}
-            keyExtractor={(item) => item.id}
-            removeClippedSubviews={true}
-          />
+        {sublets && (
+          <View>
+            <FlatList
+              data={sublets}
+              renderItem={renderEntity}
+              keyExtractor={(item) => item.id}
+              removeClippedSubviews={true}
+            />
+          </View>
+        )}
+        <View style={{paddingTop: 10}}>
+          <Button
+            onPress={onLogoutPress}
+            mode="outlined"
+            color="red"
+            backgroundColor="white"
+            style={{align: 'center', borderWidth: 2}}>
+            Logout
+          </Button>
         </View>
-      )}
-
-      <View style={{paddingTop: 10}}>
-        <Button
-          onPress={onLogoutPress}
-          mode="outlined"
-          color="#1C2541"
-          style={{align: 'center'}}>
-          Logout
-        </Button>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

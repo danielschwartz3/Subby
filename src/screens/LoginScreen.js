@@ -71,7 +71,11 @@ export default function LoginScreen({navigation}) {
         underlineColorAndroid="transparent"
         autoCapitalize="none"
       />
-      <TouchableOpacity style={styles.button} onPress={() => onLoginPress()}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          onLoginPress();
+        }}>
         <Text style={styles.buttonTitle}>Log in</Text>
       </TouchableOpacity>
       <View style={styles.footerView}>
