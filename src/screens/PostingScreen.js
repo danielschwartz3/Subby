@@ -20,6 +20,7 @@ const PostingScreen = ({navigation}) => {
   const [photoURI, setPhotoURI] = React.useState(null);
   const [squareFeetText, setSquareFeetText] = React.useState('');
   const [phoneNumberText, setPhoneNumberText] = React.useState('');
+  const [hostNameText, setHostNameText] = React.useState('');
 
   const goToHomePage = () => {
     navigation.navigate('Home');
@@ -57,6 +58,7 @@ const PostingScreen = ({navigation}) => {
       photoURI: uploadUri,
       sqFt: squareFeetText,
       phoneNumber: phoneNumberText,
+      hostName: hostNameText,
     };
     listingRef
       .doc(uid)
@@ -78,6 +80,12 @@ const PostingScreen = ({navigation}) => {
         </Appbar>
       </View>
       <View style={styles.textInputsStyle}>
+        <TextInput
+          mode="outlined"
+          label="Full Name"
+          value={hostNameText}
+          onChangeText={(text) => setHostNameText(text)}
+        />
         <TextInput
           mode="outlined"
           label="Address Line 1"
@@ -222,7 +230,7 @@ const PostingScreen = ({navigation}) => {
             />
           </View>
         </View>
-        <View style={{paddingBottom: 110}}>
+        <View style={{paddingBottom: 20}}>
           <Button
             color="#1C2541"
             mode="contained"

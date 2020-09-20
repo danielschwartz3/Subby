@@ -6,6 +6,7 @@ import {
   Text,
   FlatList,
   SafeAreaView,
+  Image,
 } from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
@@ -44,59 +45,54 @@ export default function HomeScreen({navigation}) {
 
   const renderEntity = ({item, index}) => {
     return (
-      <SafeAreaView>
-        <Card elevation={50}>
-          <Card.Content>
-            <Title style={{color: '#1C2541'}}>{`$${item.price}/month`} </Title>
-            <Paragraph style={{color: '#1C2541'}}>
-              {`${item.addressLineOne}, ${item.addressLineTwo}, ${item.city}, ${item.state}, ${item.zipCode}`}
-            </Paragraph>
-          </Card.Content>
-          <Card.Cover
-            source={{
-              uri: 'https://picsum.photos/700',
-            }}
-          />
-          <Card.Actions>
-            <View style={{flex: 1, flexDirection: 'column'}}>
-              <View style={{flex: 1, flexDirection: 'row'}}>
-                <View style={{paddingRight: 5}}>
-                  <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
-                    <Paragraph
-                      style={{
-                        color: 'white',
-                      }}>{`${item.bedroom} bedrooms`}</Paragraph>
-                  </Chip>
-                </View>
-                <View style={{paddingRight: 5}}>
-                  <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
-                    <Paragraph
-                      style={{
-                        color: 'white',
-                      }}>{`${item.bathroom} bedrooms`}</Paragraph>
-                  </Chip>
-                </View>
-                <View style={{paddingRight: 5}}>
-                  <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
-                    <Paragraph
-                      style={{
-                        color: 'white',
-                      }}>{`${item.sqFt} square feet`}</Paragraph>
-                  </Chip>
-                </View>
+      <Card elevation={50}>
+        <Card.Content>
+          <Title style={{color: '#1C2541'}}>{`$${item.price}/month`} </Title>
+          <Paragraph style={{color: '#1C2541'}}>
+            {`${item.addressLineOne}, ${item.addressLineTwo}, ${item.city}, ${item.state}, ${item.zipCode}`}
+          </Paragraph>
+        </Card.Content>
+        <Card.Cover
+          source={{
+            uri: item.photoURI,
+          }}
+        />
+        <Card.Actions>
+          <View style={{flex: 1, flexDirection: 'column'}}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View style={{paddingRight: 5}}>
+                <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
+                  <Paragraph
+                    style={{
+                      color: 'white',
+                    }}>{`${item.bedroom} bedrooms`}</Paragraph>
+                </Chip>
               </View>
-              <View style={{paddingTop: 10}}>
-                <Button
-                  mode="outlined"
-                  color="#1C2541"
-                  style={{align: 'center'}}>
-                  Details
-                </Button>
+              <View style={{paddingRight: 5}}>
+                <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
+                  <Paragraph
+                    style={{
+                      color: 'white',
+                    }}>{`${item.bathroom} bedrooms`}</Paragraph>
+                </Chip>
+              </View>
+              <View style={{paddingRight: 5}}>
+                <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
+                  <Paragraph
+                    style={{
+                      color: 'white',
+                    }}>{`${item.sqFt} square feet`}</Paragraph>
+                </Chip>
               </View>
             </View>
-          </Card.Actions>
-        </Card>
-      </SafeAreaView>
+            <View style={{paddingTop: 10}}>
+              <Button mode="outlined" color="#1C2541" style={{align: 'center'}}>
+                Details
+              </Button>
+            </View>
+          </View>
+        </Card.Actions>
+      </Card>
     );
   };
 
