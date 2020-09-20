@@ -18,8 +18,8 @@ const PostingScreen = ({navigation}) => {
   const [startDateText, setStartDateText] = React.useState('');
   const [endDateText, setEndDateText] = React.useState('');
   const [photoURI, setPhotoURI] = React.useState(null);
-  const [squareFeetText, setSquareFeetText] = React.useState(null);
-  const [phoneNumberText, setPhoneNumberText] = React.useState(null);
+  const [squareFeetText, setSquareFeetText] = React.useState('');
+  const [phoneNumberText, setPhoneNumberText] = React.useState('');
 
   const goToHomePage = () => {
     navigation.navigate('Home');
@@ -59,8 +59,6 @@ const PostingScreen = ({navigation}) => {
       phoneNumber: phoneNumberText,
     };
     listingRef.doc(uid).set(data);
-
-    goToHomePage();
   };
 
   return (
