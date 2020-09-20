@@ -3,7 +3,7 @@ import {View, StyleSheet, SafeAreaView, Image, Text} from 'react-native';
 import {Appbar, TextInput, Button} from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import {firebase} from '../config';
-import 'firebase/storage';
+import storage from '@react-native-firebase/storage';
 
 const PostingScreen = () => {
   const [addressLineOneText, setAddressLineOneText] = React.useState('');

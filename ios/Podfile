@@ -8,9 +8,12 @@ target 'Subby' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+<<<<<<< Updated upstream
 
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+=======
+>>>>>>> Stashed changes
 
   target 'SubbyTests' do
     inherit! :complete

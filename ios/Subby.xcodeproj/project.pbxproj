@@ -199,7 +199,11 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+<<<<<<< Updated upstream
 		EEA83F83D57A432CAEA2F31F /* Resources */ = {
+=======
+		A9FF79D4B5E24BE8B2343EB8 /* Resources */ = {
+>>>>>>> Stashed changes
 			isa = PBXGroup;
 			children = (
 			);
