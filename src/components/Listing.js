@@ -1,49 +1,42 @@
 import React from 'react';
-import {Image, View, Text, StyleSheet} from 'react-native';
+import {Paragraph, Card, Title, Button, Avatar, Provider as PaperProvider} from 'react-native-paper';
+import {ScrollView} from 'react-native';
 
-const Listing = () => {
+export default function Listing(){
+
+  const sub_icon = props => <Avatar.Icon {...props} icon="folder" />;
+
   return (
-    <View style={styles.container}>
-      <View>
-        <Text>Image</Text>
-      </View>
+    <ScrollView>
+      <Card>
+        <Card.Title
+          title="User"
+          left={sub_icon} />
+        <Card.Content>
+          <Title>Price per Month</Title>
+          <Paragraph>Address</Paragraph>
+          <Paragraph>City</Paragraph>
+        </Card.Content>
+        <Card.Cover source = {{uri: 'https://picsum.photos/700'}}/>
+        <Card.Actions>
+          <Button onPress={() => this.props.navigation.navigate('IndListing')}>Details</Button>
+        </Card.Actions>
+      </Card>
 
-      <View style={styles.border}>
-        <Text> ListingPricePerMonth </Text>
-        <Text> ListingAddress </Text>
-        <Text> ListingCity, ListingState </Text>
-      </View>
-    </View>
+      <Card>
+        <Card.Title
+          title="User"
+          left={sub_icon} />
+        <Card.Content>
+          <Title>Price per Month</Title>
+          <Paragraph>Address</Paragraph>
+          <Paragraph>City</Paragraph>
+        </Card.Content>
+        <Card.Cover source = {{uri: 'https://picsum.photos/700'}}/>
+        <Card.Actions>
+          <Button>Details</Button>
+        </Card.Actions>
+      </Card>
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  header: {
-    height: 90,
-    paddingTop: 50,
-    backgroundColor: '#0B132B',
-  },
-  text: {
-    flex: 2,
-    color: '#FFFFFF',
-    fontSize: 23,
-    textAlign: 'center',
-  },
-  image: {
-    flex: 1,
-    padding: '3%',
-  },
-  container: {
-    backgroundColor: '#fff',
-    alignItems: 'baseline',
-    padding: '10%',
-    width: '95%',
-    height: '15%',
-    flexDirection: 'row',
-    borderColor: 'black',
-    borderWidth: 2,
-    justifyContent: 'space-between',
-  },
-});
-
-export default Listing;
