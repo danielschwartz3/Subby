@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ImageBackground} from 'react-native';
+import {View, StyleSheet, ImageBackground, Text} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import Listing from '../components/Listing';
 import {firebase} from '../config';
@@ -7,13 +7,34 @@ import {ScrollView} from 'react-native';
 import {Button} from 'react-native-paper';
 
 export default function HomeScreen({navigation}, props) {
+  // state = {
+  //   subletListings: {adressLineOne: ''},
+  // };
+
   var getSubletListing = async () => {
     const subletDoc = await firebase
       .firestore()
       .collection('subletListings')
       .doc('1234 Another Random Street APT F')
       .get();
-    console.log(subletDoc);
+
+    if (!subletDoc.exists) {
+      console.log('No such document');
+    } else {
+      console.log(subletDoc.data());
+    }
+
+    // var subscriber = firebase
+    //   .firestore()
+    //   .collection('subletListings')
+    //   .doc('1234 Another Random Street APT F')
+    //   .onSnapshot((doc) => {
+    //     this.setState({
+    //       subletListings: {
+    //         adressLineOne: doc.data().name,
+    //       },
+    //     });
+    //   });
   };
   return (
     <ScrollView>
@@ -26,6 +47,7 @@ export default function HomeScreen({navigation}, props) {
           }}>
           Hello
         </Button>
+        <Text> Name: {this.state.subletListings.adressLineOne}</Text>
         <Listing />
       </View>
     </ScrollView>
