@@ -1,19 +1,33 @@
-import React from 'react';
-import {View, StyleSheet, ImageBackground, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, ImageBackground, Text, FlatList} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
-import Listing from '../components/Listing';
 import {firebase} from '../config';
-import {ScrollView} from 'react-native';
-import {
-  Paragraph,
-  Card,
-  Title,
-  Button,
-  Avatar,
-  TextInput,
-} from 'react-native-paper';
+import {Paragraph, Card, Title, Button, Avatar} from 'react-native-paper';
+import {sub} from 'react-native-reanimated';
 
 export default function HomeScreen({navigation}) {
+  const [sublets, setSublets] = useState([]);
+
+  const subletsRef = firebase.firestore().collection('subletListings');
+
+  useEffect(() => {
+    subletsRef.onSnapshot(
+      (querySnapshot) => {
+        const newSublets = [];
+        querySnapshot.forEach((doc) => {
+          const entity = doc.data();
+          entity.id = doc.id;
+          newSublets.push(entity);
+        });
+        setSublets(newSublets);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  });
+
+  /*
   var getAllListings = async () => {
     const subletsRef = firebase.firestore().collection('subletListings');
     const snapshot = await subletsRef.get();
@@ -26,32 +40,47 @@ export default function HomeScreen({navigation}) {
       });
     }
   };
+  */
 
   const goToPostingsPage = () => {
     navigation.navigate('Posting');
   };
 
-  const sub_icon = (props) => <Avatar.Icon {...props} icon="folder" />;
-  const [text, setText] = React.useState('');
+  const renderEntity = ({item, index}) => {
+    return (
+      <View>
+        <Card>
+          <Card.Title title="User" style={{padding: 15}} />
+          <Card.Content>
+            <Title>Price per Month</Title>
+            <Paragraph>Address</Paragraph>
+            <Paragraph>City</Paragraph>
+          </Card.Content>
+          <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+          <Card.Actions>
+            <Button onPress={() => navigation.navigate('ListDetail')}>
+              Details
+            </Button>
+          </Card.Actions>
+        </Card>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
       <HomeScreenHeader goToPostings={goToPostingsPage} />
 
-      <Card>
-        <Card.Title title="User" left={sub_icon} style={{padding: 15}} />
-        <Card.Content>
-          <Title>Price per Month</Title>
-          <Paragraph>Address</Paragraph>
-          <Paragraph>City</Paragraph>
-        </Card.Content>
-        <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
-        <Card.Actions>
-          <Button onPress={() => navigation.navigate('ListDetail')}>
-            Details
-          </Button>
-        </Card.Actions>
-      </Card>
+      {sublets && (
+        <View style={styles.listContainer}>
+          <FlatList
+            data={sublets}
+            renderItem={renderEntity}
+            keyExtractor={(item) => item.id}
+            removeClippedSubviews={true}
+          />
+        </View>
+      )}
     </View>
   );
 }
@@ -76,25 +105,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-//     <ScrollView>
-//       <View style={styles.container}>
-//         <HomeScreenHeader />
-//         <Listing />
-//         <Button
-//           onPress={() => {
-//             getAllListings();
-//           }}>
-//           Hello
-//         </Button>
-//         {/* <Text> Name: {this.state.subletListings.adressLineOne}</Text> */}
-//         <Listing />
-//       </View>
-//     </ScrollView>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//   },
-// });
