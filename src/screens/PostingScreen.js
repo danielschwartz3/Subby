@@ -18,6 +18,8 @@ const PostingScreen = ({navigation}) => {
   const [startDateText, setStartDateText] = React.useState('');
   const [endDateText, setEndDateText] = React.useState('');
   const [photoURI, setPhotoURI] = React.useState(null);
+  const [squareFeetText, setSquareFeetText] = React.useState(null);
+  const [phoneNumberText, setPhoneNumberText] = React.useState(null);
 
   const goToHomePage = () => {
     navigation.navigate('Home');
@@ -53,6 +55,8 @@ const PostingScreen = ({navigation}) => {
       startDate: startDateText,
       endDate: endDateText,
       photoURI: uploadUri,
+      sqFt: squareFeetText,
+      phoneNumber: phoneNumberText,
     };
     listingRef.doc(uid).set(data);
 
@@ -133,7 +137,7 @@ const PostingScreen = ({navigation}) => {
         </View>
         <View
           style={{
-            paddingTop: 80,
+            paddingTop: 60,
             flex: 3,
             flexDirection: 'row',
             paddingBottom: 65,
@@ -173,7 +177,7 @@ const PostingScreen = ({navigation}) => {
             <TextInput
               mode="outlined"
               label="Start Date"
-              placeholder="MMDDYYYY"
+              placeholder="MM-DD-YYYY"
               value={startDateText}
               onChangeText={(text) => setStartDateText(text)}
             />
@@ -182,15 +186,39 @@ const PostingScreen = ({navigation}) => {
             <TextInput
               mode="outlined"
               label="End Date"
-              placeholder="MMDDYYYY"
+              placeholder="MM-DD-YYYY"
               value={endDateText}
               onChangeText={(text) => setEndDateText(text)}
             />
           </View>
         </View>
+        <View
+          style={{
+            flex: 2,
+            flexDirection: 'row',
+            paddingBottom: 65,
+          }}>
+          <View style={{flex: 1, paddingRight: 10}}>
+            <TextInput
+              mode="outlined"
+              label="Square Feet"
+              value={squareFeetText}
+              onChangeText={(text) => setSquareFeetText(text)}
+            />
+          </View>
+          <View style={{flex: 1}}>
+            <TextInput
+              mode="outlined"
+              label="Phone Number"
+              placeholder="XXX-XXX-XXXX"
+              value={phoneNumberText}
+              onChangeText={(text) => setPhoneNumberText(text)}
+            />
+          </View>
+        </View>
         <View style={{paddingBottom: 110}}>
           <Button
-            color="#6495ed"
+            color="#1C2541"
             mode="contained"
             onPress={this.handleChoosePhoto}>
             Upload Sublet Photo
@@ -199,7 +227,7 @@ const PostingScreen = ({navigation}) => {
 
         <View>
           <Button
-            color="#6495ed"
+            color="#1C2541"
             mode="contained"
             onPress={this.addPostToFirebase}>
             Post Sublet!
@@ -215,7 +243,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   appBarStyle: {
-    backgroundColor: '#6495ed',
+    backgroundColor: '#1C2541',
     color: '#FFFFFF',
     paddingTop: 30,
     height: 100,
