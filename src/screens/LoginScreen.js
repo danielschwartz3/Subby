@@ -3,6 +3,7 @@ import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {StyleSheet} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
+// import {backgroundPic} from './backgroundPic.png';
 
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState('');
@@ -42,6 +43,7 @@ export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
       <HomeScreenHeader />
+      <View style={{paddingBottom: '7.5%'}}></View>
       <TextInput
         style={styles.input}
         placeholder="E-mail"
@@ -72,6 +74,21 @@ export default function LoginScreen({navigation}) {
           </Text>
         </Text>
       </View>
+      <View>
+        <Image
+          style={{
+            // resizeMode: 'contain',
+            width: '120%',
+            height: undefined,
+            aspectRatio: 1,
+            justifyContent: 'flex-end',
+            position: 'absolute',
+            bottom: -10,
+            alignSelf: 'center',
+          }}
+          source={require('../backgroundPic1.png')}
+        />
+      </View>
     </View>
   );
 }
@@ -91,6 +108,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 48,
+    width: '80%',
     borderRadius: 5,
     overflow: 'hidden',
     backgroundColor: 'white',
@@ -101,7 +119,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   button: {
-    backgroundColor: '#788eec',
+    backgroundColor: '#6495ed',
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
@@ -109,6 +127,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '80%',
   },
   buttonTitle: {
     color: 'white',

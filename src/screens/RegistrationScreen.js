@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
-import {Image, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {firebase} from '../config';
+import HomeScreenHeader from '../components/HomeScreenHeader';
 
 export default function RegistrationScreen({navigation}) {
   const [fullName, setFullName] = useState('');
@@ -45,55 +53,77 @@ export default function RegistrationScreen({navigation}) {
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Full Name"
-        placeholderTextColor="#aaaaaa"
-        onChangeText={(text) => setFullName(text)}
-        value={fullName}
-        underlineColorAndroid="transparent"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="E-mail"
-        placeholderTextColor="#aaaaaa"
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-        underlineColorAndroid="transparent"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholderTextColor="#aaaaaa"
-        secureTextEntry
-        placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        underlineColorAndroid="transparent"
-        autoCapitalize="none"
-      />
-      <TextInput
-        style={styles.input}
-        placeholderTextColor="#aaaaaa"
-        secureTextEntry
-        placeholder="Confirm Password"
-        onChangeText={(text) => setConfirmPassword(text)}
-        value={confirmPassword}
-        underlineColorAndroid="transparent"
-        autoCapitalize="none"
-      />
-      <TouchableOpacity style={styles.button} onPress={() => onRegisterPress()}>
-        <Text style={styles.buttonTitle}>Create account</Text>
-      </TouchableOpacity>
-      <View style={styles.footerView}>
-        <Text style={styles.footerText}>
-          Already got an account?{' '}
-          <Text onPress={onFooterLinkPress} style={styles.footerLink}>
-            Log in
+    <View>
+      <View style={styles.container}>
+        <HomeScreenHeader />
+        <View style={{paddingBottom: '7.5%'}}></View>
+        <TextInput
+          style={styles.input}
+          placeholder="Full Name"
+          placeholderTextColor="#aaaaaa"
+          onChangeText={(text) => setFullName(text)}
+          value={fullName}
+          underlineColorAndroid="transparent"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="E-mail"
+          placeholderTextColor="#aaaaaa"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          underlineColorAndroid="transparent"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#aaaaaa"
+          secureTextEntry
+          placeholder="Password"
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          underlineColorAndroid="transparent"
+          autoCapitalize="none"
+        />
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#aaaaaa"
+          secureTextEntry
+          placeholder="Confirm Password"
+          onChangeText={(text) => setConfirmPassword(text)}
+          value={confirmPassword}
+          underlineColorAndroid="transparent"
+          autoCapitalize="none"
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => onRegisterPress()}>
+          <Text style={styles.buttonTitle}>Create account</Text>
+        </TouchableOpacity>
+        <View style={styles.footerView}>
+          <Text style={(styles.footerText, {zIndex: 999})}>
+            Already got an account?{' '}
+            <Text onPress={onFooterLinkPress} style={styles.footerLink}>
+              Log in
+            </Text>
           </Text>
-        </Text>
+        </View>
+      </View>
+      <View>
+        <ImageBackground
+          style={{
+            // resizeMode: 'contain',
+            width: '120%',
+            height: undefined,
+            aspectRatio: 1,
+            justifyContent: 'flex-end',
+            position: 'absolute',
+            top: -100,
+            alignSelf: 'center',
+            zIndex: 1,
+          }}
+          source={require('../backgroundPic1.png')}
+        />
       </View>
     </View>
   );
@@ -114,6 +144,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 48,
+    width: '80%',
     borderRadius: 5,
     overflow: 'hidden',
     backgroundColor: 'white',
@@ -124,7 +155,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   button: {
-    backgroundColor: '#788eec',
+    backgroundColor: '#6495ed',
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
@@ -132,6 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '80%',
   },
   buttonTitle: {
     color: 'white',
