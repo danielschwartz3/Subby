@@ -4,14 +4,22 @@ import {Image, View, Text, StyleSheet} from 'react-native';
 const Listing = () => {
   return (
     <View style={styles.container}>
-      <View>
-        <Text>Image</Text>
+      <View style={styles.image}>
+        <Image></Image>
       </View>
 
-      <View style={styles.border}>
-        <Text> ListingPricePerMonth </Text>
-        <Text> ListingAddress </Text>
-        <Text> ListingCity, ListingState </Text>
+      <View>
+        <View style={styles.border}>
+          <Text> ListingPricePerMonth </Text>
+          <Text> ListingAddress </Text>
+          <Text> ListingCity, ListingState </Text>
+        </View>
+
+        <View style={styles.infoBar}>
+          <Text>Hello</Text>
+          <Text>Hello</Text>
+          <Text>Hello</Text>
+        </View>
       </View>
     </View>
   );
@@ -24,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0B132B',
   },
   text: {
-    flex: 2,
+    flex: 3,
     color: '#FFFFFF',
     fontSize: 23,
     textAlign: 'center',
@@ -32,6 +40,8 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     padding: '3%',
+    borderColor: 'black',
+    borderWidth: 1,
   },
   container: {
     backgroundColor: '#fff',
@@ -41,7 +51,11 @@ const styles = StyleSheet.create({
     height: '15%',
     flexDirection: 'row',
     borderColor: 'black',
-    borderWidth: 2,
+    borderWidth: 1,
+    justifyContent: 'space-between',
+  },
+  infoBar: {
+    flexDirection: 'row',
     justifyContent: 'space-between',
   },
 });
