@@ -11,31 +11,44 @@ export default function HomeScreen({navigation}, props) {
   //   subletListings: {adressLineOne: ''},
   // };
 
-  var getSubletListing = async () => {
-    const subletDoc = await firebase
-      .firestore()
-      .collection('subletListings')
-      .doc('1234 Another Random Street APT F')
-      .get();
+  var getAllListings = async () => {
+    const subletsRef = firebase.firestore().collection('subletListings');
+    const snapshot = await subletsRef.get();
 
-    if (!subletDoc.exists) {
-      console.log('No such document');
+    if (snapshot.empty) {
+      console.log('No matching documents');
     } else {
-      console.log(subletDoc.data());
+      snapshot.forEach((doc) => {
+        console.log(doc.id, '=>', doc.data());
+      });
     }
-
-    // var subscriber = firebase
-    //   .firestore()
-    //   .collection('subletListings')
-    //   .doc('1234 Another Random Street APT F')
-    //   .onSnapshot((doc) => {
-    //     this.setState({
-    //       subletListings: {
-    //         adressLineOne: doc.data().name,
-    //       },
-    //     });
-    //   });
   };
+  // var getSubletListing = async () => {
+  //   const subletDoc = await firebase
+  //     .firestore()
+  //     .collection('subletListings')
+  //     .doc('1234 Another Random Street APT F')
+  //     .get();
+
+  //   if (!subletDoc.exists) {
+  //     console.log('No such document');
+  //   } else {
+  //     console.log(subletDoc.data());
+  //   }
+
+  //   // var subscriber = firebase
+  //   //   .firestore()
+  //   //   .collection('subletListings')
+  //   //   .doc('1234 Another Random Street APT F')
+  //   //   .onSnapshot((doc) => {
+  //   //     this.setState({
+  //   //       subletListings: {
+  //   //         adressLineOne: doc.data().name,
+  //   //       },
+  //   //     });
+  //   //   });
+  // };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -43,11 +56,11 @@ export default function HomeScreen({navigation}, props) {
         <Listing />
         <Button
           onPress={() => {
-            getSubletListing();
+            getAllListings();
           }}>
           Hello
         </Button>
-        <Text> Name: {this.state.subletListings.adressLineOne}</Text>
+        {/* <Text> Name: {this.state.subletListings.adressLineOne}</Text> */}
         <Listing />
       </View>
     </ScrollView>
