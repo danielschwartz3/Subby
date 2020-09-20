@@ -10,6 +10,7 @@ import {
 import {StyleSheet} from 'react-native';
 import {firebase} from '../config';
 import HomeScreenHeader from '../components/HomeScreenHeader';
+import {Appbar} from 'react-native-paper';
 
 export default function RegistrationScreen({navigation}) {
   const [fullName, setFullName] = useState('');
@@ -54,7 +55,9 @@ export default function RegistrationScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <HomeScreenHeader />
+      <Appbar.Header style={{backgroundColor: '#1C2541'}}>
+        <Appbar.Content title="Subby" />
+      </Appbar.Header>
       <View style={{paddingBottom: '7.5%'}}></View>
       <TextInput
         style={styles.input}
@@ -150,7 +153,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   button: {
-    backgroundColor: '#6495ed',
+    backgroundColor: '#1C2541',
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,

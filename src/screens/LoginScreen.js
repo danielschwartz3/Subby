@@ -48,8 +48,8 @@ export default function LoginScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Appbar.Header style={{backgroundColor: '#6495ed'}}>
-        <Appbar.Content title="Subby Postings" />
+      <Appbar.Header style={{backgroundColor: '#1C2541'}}>
+        <Appbar.Content title="Subby" />
       </Appbar.Header>
       <View style={{paddingBottom: '7.5%'}}></View>
       <TextInput
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   button: {
-    backgroundColor: '#6495ed',
+    backgroundColor: '#1C2541',
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
