@@ -17,6 +17,10 @@ export default function HomeScreen({navigation}) {
 
   const subletsRef = firebase.firestore().collection('subletListings');
 
+  const onLogoutPress = () => {
+    navigation.navigate('Login');
+  };
+
   useEffect(() => {
     subletsRef.onSnapshot(
       (querySnapshot) => {
@@ -125,6 +129,16 @@ export default function HomeScreen({navigation}) {
           />
         </View>
       )}
+
+      <View style={{paddingTop: 10}}>
+        <Button
+          onPress={onLogoutPress}
+          mode="outlined"
+          color="#1C2541"
+          style={{align: 'center'}}>
+          Logout
+        </Button>
+      </View>
     </View>
   );
 }
