@@ -80,6 +80,14 @@ export default function HomeScreen({navigation}) {
                     }}>{`${item.bathroom} bedrooms`}</Paragraph>
                 </Chip>
               </View>
+              <View style={{paddingRight: 5}}>
+                <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
+                  <Paragraph
+                    style={{
+                      color: 'white',
+                    }}>{`${item.sqFt} Square Feet`}</Paragraph>
+                </Chip>
+              </View>
             </View>
             <View style={{paddingTop: 10}}>
               <Button
