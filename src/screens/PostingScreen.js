@@ -5,7 +5,7 @@ import ImagePicker from 'react-native-image-picker';
 import {firebase} from '../config';
 import 'firebase/storage';
 
-const PostingScreen = () => {
+const PostingScreen = ({navigation}) => {
   const [addressLineOneText, setAddressLineOneText] = React.useState('');
   const [addressLineTwoText, setAddressLineTwoText] = React.useState('');
   const [cityText, setCityText] = React.useState('');
@@ -19,7 +19,9 @@ const PostingScreen = () => {
   const [endDateText, setEndDateText] = React.useState('');
   const [photoURI, setPhotoURI] = React.useState(null);
 
-  const _goBack = () => console.log('Went back');
+  const goToHomePage = () => {
+    navigation.navigate('Home');
+  };
 
   handleChoosePhoto = () => {
     const options = {};
@@ -31,135 +33,12 @@ const PostingScreen = () => {
     });
   };
 
-  /*
-  handleOnPress = () => {
-    ImagePicker.launchImageLibraryAsync({
-      mediaTypes: 'Images',
-    })
-      .then((result) => {
-        if (!result.cancelled) {
-          // User picked an image
-          const {height, width, type, uri} = result;
-          return uriToBlob(uri);
-        }
-      })
-      .then((blob) => {
-        return uploadToFirebase(blob);
-      })
-      .then((snapshot) => {
-        console.log('File uploaded');
-      })
-      .catch((error) => {
-        throw error;
-      });
-  };
-  */
-
-  handleOnpress = async () => {
-    try {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: 'Images',
-      });
-      if (!result.cancelled) {
-        const {uri} = result;
-      }
-    } catch (E) {
-      console.log(E);
-    }
-  };
-
-  const uriToBlob = (uri) => {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-
-      xhr.onload = function () {
-        // return the blob
-        resolve(xhr.response);
-      };
-
-      xhr.onerror = function () {
-        // something went wrong
-        reject(new Error('uriToBlob failed'));
-      };
-
-      // this helps us get a blob
-      xhr.responseType = 'blob';
-
-      xhr.open('GET', uri, true);
-      xhr.send(null);
-    });
-  };
-
-  const uploadToFirebase = (blob) => {
-    return new Promise((resolve, reject) => {
-      var storageRef = firebase.storage().ref();
-
-      storageRef
-        .child('uploads/photo.jpg')
-        .put(blob, {
-          contentType: 'image/jpeg',
-        })
-        .then((snapshot) => {
-          blob.close();
-
-          resolve(snapshot);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  };
-
-  const addImageToStorage = () => {
-    const filename = photoURI.substring(photoURI.lastIndexOf('/') + 1);
-    const uploadUri = photoURI.replace('file://', '');
-
-    const storage = firebase.storage();
-    const storageRef = storage.ref(`subletImages/${filename}`).put(uploadUri);
-    storageRef.on(
-      'state_changed',
-      (snapshot) => {},
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref('subletImages')
-          .child(filename)
-          .getDownloadURL()
-          .then((url) => {
-            console.log(url);
-          });
-      },
-    );
-  };
-
   addPostToFirebase = () => {
     const listingRef = firebase.firestore().collection('subletListings');
     const uid = addressLineOneText + ' ' + addressLineTwoText;
 
     const filename = photoURI.substring(photoURI.lastIndexOf('/') + 1);
     const uploadUri = photoURI.replace('file://', '');
-    /*
-    const storage = firebase.storage();
-    const storageRef = storage.ref(`subletImages/${filename}`).put(uploadUri);
-    storageRef.on(
-      'state_changed',
-      (snapshot) => {},
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref('subletImages')
-          .child(filename)
-          .getDownloadURL()
-          .then((url) => {
-            console.log(url);
-          });
-      },
-    );
-    */
 
     const data = {
       addressLineOne: addressLineOneText,
@@ -176,14 +55,16 @@ const PostingScreen = () => {
       photoURI: uploadUri,
     };
     listingRef.doc(uid).set(data);
+
+    goToHomePage();
   };
 
   return (
-    <SafeAreaView>
+    <View>
       <View>
         <Appbar style={styles.appBarStyle}>
-          <Appbar.BackAction onPress={_goBack} />
-          <Appbar.Content title="Create Sublet Post" />
+          <Appbar.BackAction color="white" onPress={goToHomePage} />
+          <Appbar.Content titleStyle={styles.text} title="Create Sublet Post" />
         </Appbar>
       </View>
       <View style={styles.textInputsStyle}>
@@ -252,7 +133,7 @@ const PostingScreen = () => {
         </View>
         <View
           style={{
-            paddingTop: 180,
+            paddingTop: 80,
             flex: 3,
             flexDirection: 'row',
             paddingBottom: 65,
@@ -309,7 +190,7 @@ const PostingScreen = () => {
         </View>
         <View style={{paddingBottom: 110}}>
           <Button
-            color="#0B132B"
+            color="#6495ed"
             mode="contained"
             onPress={this.handleChoosePhoto}>
             Upload Sublet Photo
@@ -318,14 +199,14 @@ const PostingScreen = () => {
 
         <View>
           <Button
-            color="#0B132B"
+            color="#6495ed"
             mode="contained"
             onPress={this.addPostToFirebase}>
             Post Sublet!
           </Button>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -334,13 +215,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   appBarStyle: {
-    backgroundColor: '#0B132B',
+    backgroundColor: '#6495ed',
     color: '#FFFFFF',
+    paddingTop: 30,
+    height: 100,
   },
   textInputsStyle: {
     paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 23,
+    textAlign: 'center',
   },
 });
 

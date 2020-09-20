@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 import {StyleSheet} from 'react-native';
-import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
+import {Appbar} from 'react-native-paper';
 
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState('');
@@ -48,7 +48,9 @@ export default function LoginScreen({navigation}) {
 
   return (
     <View style={styles.container}>
-      <HomeScreenHeader />
+      <Appbar.Header style={{backgroundColor: '#6495ed'}}>
+        <Appbar.Content title="Subby Postings" />
+      </Appbar.Header>
       <View style={{paddingBottom: '7.5%'}}></View>
       <TextInput
         style={styles.input}
@@ -82,7 +84,6 @@ export default function LoginScreen({navigation}) {
       </View>
       <ImageBackground
         style={{
-          // resizeMode: 'contain',
           width: '120%',
           height: undefined,
           aspectRatio: 1,
@@ -99,7 +100,6 @@ export default function LoginScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
   },
   title: {},
   logo: {
@@ -150,5 +150,10 @@ const styles = StyleSheet.create({
     color: '#788eec',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 23,
+    textAlign: 'center',
   },
 });

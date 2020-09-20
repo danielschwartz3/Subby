@@ -27,12 +27,16 @@ export default function HomeScreen({navigation}) {
     }
   };
 
+  const goToPostingsPage = () => {
+    navigation.navigate('Posting');
+  };
+
   const sub_icon = (props) => <Avatar.Icon {...props} icon="folder" />;
   const [text, setText] = React.useState('');
 
   return (
     <View style={styles.container}>
-      <HomeScreenHeader />
+      <HomeScreenHeader goToPostings={goToPostingsPage} />
 
       <Card>
         <Card.Title title="User" left={sub_icon} style={{padding: 15}} />

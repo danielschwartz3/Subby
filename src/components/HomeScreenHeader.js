@@ -1,11 +1,20 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {Appbar, Button} from 'react-native-paper';
 
-const HomeScreenHeader = () => {
+const HomeScreenHeader = (props) => {
   return (
-    <View style={styles.header}>
-      <Text style={styles.text}>Subby</Text>
-    </View>
+    <Appbar.Header style={{backgroundColor: '#6495ed'}}>
+      <Appbar.Content titleStyle={styles.text} title="Subby Postings" />
+      <Button
+        style={{width: 60}}
+        compact={true}
+        color="white"
+        mode="outlined"
+        onPress={() => props.goToPostings()}>
+        POST
+      </Button>
+    </Appbar.Header>
   );
 };
 
