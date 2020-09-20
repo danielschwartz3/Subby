@@ -1,45 +1,37 @@
 import React from 'react';
-import {Paragraph, Card, Title, Button, Avatar, Provider as PaperProvider} from 'react-native-paper';
-import {ScrollView} from 'react-native';
+import {
+  Paragraph,
+  Card,
+  Title,
+  Button,
+  Avatar,
+  Provider as PaperProvider,
+} from 'react-native-paper';
 
-export default function Listing(){
+export default function Listing({navigation}) {
+  const sub_icon = (props) => <Avatar.Icon {...props} icon="folder" />;
 
-  const sub_icon = props => <Avatar.Icon {...props} icon="folder" />;
+  // const onDetailPress = () => {
+  //     navigation.navigate(‘IndListing’);
+  //   };
 
   return (
-    <ScrollView>
-      <Card>
-        <Card.Title
-          title="User"
-          left={sub_icon} />
-        <Card.Content>
-          <Title>Price per Month</Title>
-          <Paragraph>Address</Paragraph>
-          <Paragraph>City</Paragraph>
-        </Card.Content>
-        <Card.Cover source = {{uri: 'https://picsum.photos/700'}}/>
-        <Card.Actions>
-          <Button onPress={() => this.props.navigation.navigate('IndListing')}>Details</Button>
-        </Card.Actions>
-      </Card>
-
-      <Card>
-        <Card.Title
-          title="User"
-          left={sub_icon} />
-        <Card.Content>
-          <Title>Price per Month</Title>
-          <Paragraph>Address</Paragraph>
-          <Paragraph>City</Paragraph>
-        </Card.Content>
-        <Card.Cover source = {{uri: 'https://picsum.photos/700'}}/>
-        <Card.Actions>
-          <Button>Details</Button>
-        </Card.Actions>
-      </Card>
-    </ScrollView>
+    <Card>
+      <Card.Title title="User" left={sub_icon} style={{padding: 15}} />
+      <Card.Content>
+        <Title>Price per Month</Title>
+        <Paragraph>Address</Paragraph>
+        <Paragraph>City</Paragraph>
+      </Card.Content>
+      <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+      {/* <Card.Actions>
+        <Button onPress={() => navigation.navigate('IndListing')}>
+          Details
+        </Button>
+      </Card.Actions> */}
+    </Card>
   );
-};
+}
 
 //     <View style={styles.container}>
 //       <View style={styles.image}>
