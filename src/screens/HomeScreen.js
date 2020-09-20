@@ -80,18 +80,13 @@ export default function HomeScreen({navigation}) {
                     }}>{`${item.bathroom} bedrooms`}</Paragraph>
                 </Chip>
               </View>
-              <View style={{paddingTop: 10}}>
-                <Button
-                  mode="outlined"
-                  color="#1C2541"
-                  style={{align: 'center'}}
-                  onPress={() => goToDetailPage((item: item))}>
-                  Details
-                </Button>
-              </View>
             </View>
             <View style={{paddingTop: 10}}>
-              <Button mode="outlined" color="#1C2541" style={{align: 'center'}}>
+              <Button
+                onPress={() => goToDetailPage((item: item))}
+                mode="outlined"
+                color="#1C2541"
+                style={{align: 'center'}}>
                 Details
               </Button>
             </View>
