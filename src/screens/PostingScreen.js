@@ -137,7 +137,7 @@ const PostingScreen = ({navigation}) => {
         </View>
         <View
           style={{
-            paddingTop: 80,
+            paddingTop: 60,
             flex: 3,
             flexDirection: 'row',
             paddingBottom: 65,
@@ -177,7 +177,7 @@ const PostingScreen = ({navigation}) => {
             <TextInput
               mode="outlined"
               label="Start Date"
-              placeholder="MMDDYYYY"
+              placeholder="MM-DD-YYYY"
               value={startDateText}
               onChangeText={(text) => setStartDateText(text)}
             />
@@ -186,7 +186,7 @@ const PostingScreen = ({navigation}) => {
             <TextInput
               mode="outlined"
               label="End Date"
-              placeholder="MMDDYYYY"
+              placeholder="MM-DD-YYYY"
               value={endDateText}
               onChangeText={(text) => setEndDateText(text)}
             />
