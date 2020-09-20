@@ -3,8 +3,6 @@ import {View, StyleSheet, ImageBackground} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import Listing from '../components/Listing';
 import NewListingField from '../components/NewListingField';
-import {firebase} from '../config';
-import 'firebase/storage';
 
 export default function HomeScreen(props) {
   return (
