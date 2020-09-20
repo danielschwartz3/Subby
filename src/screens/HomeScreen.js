@@ -29,26 +29,28 @@ export default function HomeScreen({navigation}) {
 
   const sub_icon = (props) => <Avatar.Icon {...props} icon="folder" />;
   const [text, setText] = React.useState('');
-
+  getAllListings();
   return (
-    <View style={styles.container}>
-      <HomeScreenHeader />
+    <ScrollView>
+      <View style={styles.container}>
+        <HomeScreenHeader />
 
-      <Card>
-        <Card.Title title="User" left={sub_icon} style={{padding: 15}} />
-        <Card.Content>
-          <Title>Price per Month</Title>
-          <Paragraph>Address</Paragraph>
-          <Paragraph>City</Paragraph>
-        </Card.Content>
-        <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
-        <Card.Actions>
-          <Button onPress={() => navigation.navigate('ListDetail')}>
-            Details
-          </Button>
-        </Card.Actions>
-      </Card>
-    </View>
+        <Card>
+          <Card.Title title="User" left={sub_icon} style={{padding: 15}} />
+          <Card.Content>
+            <Title>Price per Month</Title>
+            <Paragraph>Address</Paragraph>
+            <Paragraph>City</Paragraph>
+          </Card.Content>
+          <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+          <Card.Actions>
+            <Button onPress={() => navigation.navigate('ListDetail')}>
+              Details
+            </Button>
+          </Card.Actions>
+        </Card>
+      </View>
+    </ScrollView>
   );
 }
 
