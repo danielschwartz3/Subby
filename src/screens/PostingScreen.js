@@ -58,7 +58,15 @@ const PostingScreen = ({navigation}) => {
       sqFt: squareFeetText,
       phoneNumber: phoneNumberText,
     };
-    listingRef.doc(uid).set(data);
+    listingRef
+      .doc(uid)
+      .set(data)
+      .then(() => {
+        navigation.navigate('Home', {user: data});
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   return (

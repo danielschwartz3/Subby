@@ -36,22 +36,7 @@ export default function HomeScreen({navigation}) {
         console.log(error);
       },
     );
-  });
-
-  /*
-  var getAllListings = async () => {
-    const subletsRef = firebase.firestore().collection('subletListings');
-    const snapshot = await subletsRef.get();
-
-    if (snapshot.empty) {
-      console.log('No matching documents');
-    } else {
-      snapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
-      });
-    }
-  };
-  */
+  }, []);
 
   const goToPostingsPage = () => {
     navigation.navigate('Posting');
