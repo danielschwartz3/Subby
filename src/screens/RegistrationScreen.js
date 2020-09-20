@@ -53,78 +53,72 @@ export default function RegistrationScreen({navigation}) {
   };
 
   return (
-    <View>
-      <View style={styles.container}>
-        <HomeScreenHeader />
-        <View style={{paddingBottom: '7.5%'}}></View>
-        <TextInput
-          style={styles.input}
-          placeholder="Full Name"
-          placeholderTextColor="#aaaaaa"
-          onChangeText={(text) => setFullName(text)}
-          value={fullName}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="E-mail"
-          placeholderTextColor="#aaaaaa"
-          onChangeText={(text) => setEmail(text)}
-          value={email}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#aaaaaa"
-          secureTextEntry
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          value={password}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#aaaaaa"
-          secureTextEntry
-          placeholder="Confirm Password"
-          onChangeText={(text) => setConfirmPassword(text)}
-          value={confirmPassword}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => onRegisterPress()}>
-          <Text style={styles.buttonTitle}>Create account</Text>
-        </TouchableOpacity>
-        <View style={styles.footerView}>
-          <Text style={(styles.footerText, {zIndex: 999})}>
-            Already got an account?{' '}
-            <Text onPress={onFooterLinkPress} style={styles.footerLink}>
-              Log in
-            </Text>
+    <View style={styles.container}>
+      <HomeScreenHeader />
+      <View style={{paddingBottom: '7.5%'}}></View>
+      <TextInput
+        style={styles.input}
+        placeholder="Full Name"
+        placeholderTextColor="#aaaaaa"
+        onChangeText={(text) => setFullName(text)}
+        value={fullName}
+        underlineColorAndroid="transparent"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="E-mail"
+        placeholderTextColor="#aaaaaa"
+        onChangeText={(text) => setEmail(text)}
+        value={email}
+        underlineColorAndroid="transparent"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholderTextColor="#aaaaaa"
+        secureTextEntry
+        placeholder="Password"
+        onChangeText={(text) => setPassword(text)}
+        value={password}
+        underlineColorAndroid="transparent"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholderTextColor="#aaaaaa"
+        secureTextEntry
+        placeholder="Confirm Password"
+        onChangeText={(text) => setConfirmPassword(text)}
+        value={confirmPassword}
+        underlineColorAndroid="transparent"
+        autoCapitalize="none"
+      />
+      <TouchableOpacity style={styles.button} onPress={() => onRegisterPress()}>
+        <Text style={styles.buttonTitle}>Create account</Text>
+      </TouchableOpacity>
+      <View style={styles.footerView}>
+        <Text style={styles.footerText}>
+          Already got an account?{' '}
+          <Text onPress={onFooterLinkPress} style={styles.footerLink}>
+            Log in
           </Text>
-        </View>
+        </Text>
       </View>
-      <View>
-        <ImageBackground
-          style={{
-            // resizeMode: 'contain',
-            width: '120%',
-            height: undefined,
-            aspectRatio: 1,
-            justifyContent: 'flex-end',
-            position: 'absolute',
-            top: -100,
-            alignSelf: 'center',
-            zIndex: 1,
-          }}
-          source={require('../backgroundPic1.png')}
-        />
-      </View>
+      <View></View>
+      <ImageBackground
+        style={{
+          // resizeMode: 'contain',
+          width: '120%',
+          height: undefined,
+          aspectRatio: 1,
+          justifyContent: 'flex-end',
+          position: 'absolute',
+          bottom: -100,
+          alignSelf: 'center',
+          zIndex: 1,
+        }}
+        source={require('../backgroundPic1.png')}></ImageBackground>
     </View>
   );
 }
@@ -133,6 +127,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    zIndex: 999,
   },
   title: {},
   logo: {
