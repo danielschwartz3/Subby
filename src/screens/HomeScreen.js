@@ -52,8 +52,8 @@ export default function HomeScreen({navigation}) {
         <Card>
           <Card.Title title="User" style={{padding: 15}} />
           <Card.Content>
-            <Title>Price per Month</Title>
-            <Paragraph>Address</Paragraph>
+            <Title>{item.price}</Title>
+            <Paragraph>{item.addressLineOne}</Paragraph>
             <Paragraph>City</Paragraph>
           </Card.Content>
           <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
