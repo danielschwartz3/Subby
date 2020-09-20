@@ -15,6 +15,7 @@ const HomeScreenHeader = (props) => {
         POST
       </Button>
     </Appbar.Header>
+
   );
 };
 
