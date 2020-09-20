@@ -4,7 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 const HomeScreenHeader = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.text}>Subby</Text>
+      <Text style={styles.text}>Subby Postings</Text>
     </View>
   );
 };
