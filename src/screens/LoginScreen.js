@@ -10,7 +10,6 @@ import {
 import {StyleSheet} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
-// import {backgroundPic} from './backgroundPic.png';
 
 export default function LoginScreen({navigation}) {
   const [email, setEmail] = useState('');
