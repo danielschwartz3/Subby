@@ -3,20 +3,29 @@ import {View, StyleSheet, ImageBackground} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import Listing from '../components/Listing';
 import NewListingField from '../components/NewListingField';
-import {ScrollView} from 'react-native';
-
 import {firebase} from '../config';
 import 'firebase/storage';
 
-export default function HomeScreen({navigation}, props) {
+export default function HomeScreen(props) {
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <HomeScreenHeader />
-        <Listing />
-        <Listing />
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <HomeScreenHeader />
+      <Listing />
+      <NewListingField />
+
+      <ImageBackground
+        style={{
+          // resizeMode: 'contain',
+          width: '120%',
+          height: undefined,
+          aspectRatio: 1,
+          justifyContent: 'flex-end',
+          position: 'absolute',
+          bottom: -100,
+          alignSelf: 'center',
+        }}
+        source={require('../backgroundPic1.png')}></ImageBackground>
+    </View>
   );
 }
 
