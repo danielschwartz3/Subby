@@ -1,8 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, ImageBackground, Text, FlatList} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  Text,
+  FlatList,
+  SafeAreaView,
+} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import {firebase} from '../config';
-import {Paragraph, Card, Title, Button, Avatar} from 'react-native-paper';
+import {Paragraph, Card, Title, Button, Chip} from 'react-native-paper';
 import {sub} from 'react-native-reanimated';
 
 export default function HomeScreen({navigation}) {
@@ -48,22 +55,59 @@ export default function HomeScreen({navigation}) {
 
   const renderEntity = ({item, index}) => {
     return (
-      <View>
-        <Card>
-          <Card.Title title="User" style={{padding: 15}} />
+      <SafeAreaView>
+        <Card elevation={50}>
           <Card.Content>
-            <Title>{item.price}</Title>
-            <Paragraph>{item.addressLineOne}</Paragraph>
-            <Paragraph>City</Paragraph>
+            <Title style={{color: '#1C2541'}}>{`$${item.price}/month`} </Title>
+            <Paragraph style={{color: '#1C2541'}}>
+              {`${item.addressLineOne}, ${item.addressLineTwo}, ${item.city}, ${item.state}, ${item.zipCode}`}
+            </Paragraph>
           </Card.Content>
-          <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+          <Card.Cover
+            source={{
+              uri: 'https://picsum.photos/700',
+            }}
+          />
           <Card.Actions>
-            <Button onPress={() => navigation.navigate('ListDetail')}>
-              Details
-            </Button>
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{paddingRight: 5}}>
+                  <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
+                    <Paragraph
+                      style={{
+                        color: 'white',
+                      }}>{`${item.bedroom} bedrooms`}</Paragraph>
+                  </Chip>
+                </View>
+                <View style={{paddingRight: 5}}>
+                  <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
+                    <Paragraph
+                      style={{
+                        color: 'white',
+                      }}>{`${item.bathroom} bedrooms`}</Paragraph>
+                  </Chip>
+                </View>
+                <View style={{paddingRight: 5}}>
+                  <Chip style={{backgroundColor: '#1C2541'}} mode="outlined">
+                    <Paragraph
+                      style={{
+                        color: 'white',
+                      }}>{`${item.sqFt} square feet`}</Paragraph>
+                  </Chip>
+                </View>
+              </View>
+              <View style={{paddingTop: 10}}>
+                <Button
+                  mode="outlined"
+                  color="#1C2541"
+                  style={{align: 'center'}}>
+                  Details
+                </Button>
+              </View>
+            </View>
           </Card.Actions>
         </Card>
-      </View>
+      </SafeAreaView>
     );
   };
 
@@ -72,7 +116,7 @@ export default function HomeScreen({navigation}) {
       <HomeScreenHeader goToPostings={goToPostingsPage} />
 
       {sublets && (
-        <View style={styles.listContainer}>
+        <View>
           <FlatList
             data={sublets}
             renderItem={renderEntity}
@@ -88,6 +132,7 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 120,
   },
   textField: {
     paddingLeft: '2.5%',
