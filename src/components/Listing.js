@@ -8,7 +8,7 @@ import {
   Provider as PaperProvider,
 } from 'react-native-paper';
 
-export default function Listing({navigation}) {
+export default function Listing(data) {
   const sub_icon = (props) => <Avatar.Icon {...props} icon="folder" />;
 
   // const onDetailPress = () => {
@@ -24,6 +24,7 @@ export default function Listing({navigation}) {
         <Paragraph>City</Paragraph>
       </Card.Content>
       <Card.Cover source={{uri: 'https://picsum.photos/700'}} />
+
       {/* <Card.Actions>
         <Button onPress={() => navigation.navigate('IndListing')}>
           Details
