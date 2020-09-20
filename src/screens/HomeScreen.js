@@ -2,13 +2,10 @@ import React from 'react';
 import {View, StyleSheet, ImageBackground} from 'react-native';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import Listing from '../components/Listing';
-import NewListingField from '../components/NewListingField';
+import {firebase} from '../config';
 import {ScrollView} from 'react-native';
 
-import {firebase} from '../config';
-import 'firebase/storage';
-
-export default function HomeScreen({navigation}, props) {
+export default function HomeScreen(props) {
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -22,6 +19,6 @@ export default function HomeScreen({navigation}, props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
   },
 });
