@@ -56,7 +56,7 @@ export default function RegistrationScreen({navigation}) {
   return (
     <View style={styles.container}>
       <Appbar.Header style={{backgroundColor: '#1C2541'}}>
-        <Appbar.Content title="Subby" />
+        <Appbar.Content title="Register an Account" />
       </Appbar.Header>
       <View style={{paddingBottom: '7.5%'}}></View>
       <TextInput
@@ -129,7 +129,6 @@ export default function RegistrationScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     zIndex: 999,
   },
   title: {},
